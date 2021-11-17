@@ -12,13 +12,13 @@ https://github.com/WCU-CS-CooperLab/emopers.git
 Change directory to emopers
 cd emopers
 
-Install Virtual Envionmeent
+Install Virtual Environment
 pip install virtualenv(if virualenv is not installed)
 
-Create Virtual Enviornment
+Create Virtual Environment
 python -m venv venv
 
-Activate  Virtual Enviornment
+Activate  Virtual Environment
 source venv/Scripts/activate
 
 Install the emopers dependencies
