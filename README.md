@@ -16,14 +16,15 @@ Install Virtual Environment
 pip install virtualenv(if virualenv is not installed)
 
 Create Virtual Environment
-python -m venv venv
+python3 -m venv venv
 
-Activate  Virtual Environment
+Activate  Virtual Environment (Windows)
 source venv/Scripts/activate
 
 Install the emopers dependencies
 pip install -r requirements.txt
 
-Go inside the emopers\venv\Lib\site-packages\keras\engine folder and replace the saving.py
+(Windows specific?)
+Open emopers\venv\Lib\site-packages\keras\engine\saving.py and on lines 224, 229, 233, and 296 comment out .decode("utf8") 
 
 Run the intervention by clicking on Emoper's.bat
