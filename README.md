@@ -12,11 +12,11 @@ https://github.com/WCU-CS-CooperLab/emopers.git
 Change directory to emopers
 cd emopers
 
-Install Virtual Environment
-pip install virtualenv(if virualenv is not installed)
+Install Virtual Environment (unless already installed)
+pip install virtualenv       
 
 Create Virtual Environment
-python3 -m venv venv
+virtualenv -p python3.6 venv
 
 Activate  Virtual Environment (Windows)
 source venv/Scripts/activate
