@@ -25,7 +25,7 @@ setuptools.setup(
        'lasagne',
        'pytest',
        'matplotlib>2.1.0',
-       'numpy==1.17.4',
+       'numpy==1.16.4',
        'scikit-image==0.13.1',
        'scikit-learn>=0.19.1',
        'scikit-neuralnetwork>=0.7',
@@ -35,5 +35,6 @@ setuptools.setup(
        'h5py',
        'pydot',
        'graphviz',
+       'flask'
     ]
 )
