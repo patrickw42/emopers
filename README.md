@@ -21,6 +21,9 @@ virtualenv -p python3.6 venv
 Activate  Virtual Environment (Windows)
 source venv/Scripts/activate
 
+Activate  Virtual Environment (Mac)
+source venv/bin/activate
+
 Install the emopers dependencies
 pip install -r requirements.txt
 
