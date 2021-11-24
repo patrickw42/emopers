@@ -57,7 +57,8 @@ pip install -r requirements.txt
  training_config = json.loads(training_config)#.decode('utf-8'))
  ```
 
-Run the program 
+Change directories and run the program 
 ```
-python emopy/scripts/emopers.py
+cd empoy/scripts
+python emopers.py
 ```
