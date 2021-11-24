@@ -59,5 +59,5 @@ pip install -r requirements.txt
 
 Run the program 
 ```
-python emopy/Scripts/emopers.py
+python emopy/scripts/emopers.py
 ```
