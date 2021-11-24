@@ -47,11 +47,12 @@ Install the emopers dependencies
 ```
 pip install -r requirements.txt
 ```
-(Windows specific)
 
-Open emopers\venv\Lib\site-packages\keras\engine\saving.py and on lines 224, 229, 233, and 296 comment out ".decode("utf8")"  so they look like:
 
+(Windows specific) Open emopers\venv\Lib\site-packages\keras\engine\saving.py and on lines 224, 229, 233, and 296 comment out ".decode("utf8")"  so they look like:
+ ```
  model_config = json.loads(model_config.decode)#('utf-8'))
  original_keras_version = model_weights_group['keras_version']#.decode('utf8')
  original_backend = model_weights_group['backend']#.decode('utf8')
  training_config = json.loads(training_config)#.decode('utf-8'))
+ ```
