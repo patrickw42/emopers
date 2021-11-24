@@ -5,33 +5,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="ui/style.css">
-
-
+	<link rel="stylesheet" href="static/style.css">
 	<title>Emopers</title>
+	<script type="text/javascript">
+	    var emotion = {{ result|tojson }};
+	</script>
 </head>
 <body>
 	<header>
 		<p>EMOPER'S</p>
 	</header>
 	<div id="main-container">
-		<p id="message"></p>
+		<p id="message">Looks like you are {{ result }}!</p>
 		<div id="left-container">
-			<img id="user" src="image_data/user.png">
+			<img id="user" src="static/image_data/user.png">
 		</div>
 		<div id="right-container">
-			<video width="320" height="240" autoplay muted>
-			  <source src="../intervention_data/happy1.mp4" type="video/mp4">
-			Your browser does not support the video tag.
-			</video>
+
 		</div>
 	</div>
 	<footer>
 		<p>All right reserved © Emoper's</p>
 	</footer>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<script src="ui/script.js"></script>
+	<script src="static/script.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@ os.environ['KERAS_BACKEND']='tensorflow'
 import tensorflow as tf
 import cv2
 from EmoPy.src.fermodel import FERModel
-import time
+from keras import backend as K
 
 #Function to remove Tensorflow warrnings
 def tf_no_warning():
@@ -50,49 +50,39 @@ def capture_image(video_capture, file):
     video_capture.release()
     return frame
 
-def get_emotion_from_camera():
-
+def get_emotion_from_camera(flag):
+    print(flag)
     directory = os.getcwd() 
 
     # Specify the camera which you want to use. The default argument is '0'
     video_capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-    file = directory + '/EmoPy/scripts/image_data/image.jpg'
+    
+    if(flag == "validationRun"):
+        file = directory + '/static/image_data/followUp.jpg'
+    else:
+        file = directory + '/static/image_data/image.jpg'
+
     frame = capture_image(video_capture, file)
 
     if frame is not None:
         # Can choose other target emotions from the emotion subset defined in
         # fermodel.py in src directory. The function
         # defined as `def _check_emotion_set_is_supported(self):`
-        target_emotions = ['anger', 'happiness']
+        target_emotions = ['calm', 'happiness', 'anger']
         model = FERModel(target_emotions, verbose=True)
 
         frame_string = model.predict(file)
-        url = directory + '/EmoPy/scripts/Emopers.html#{}'.format(frame_string)
-        webbrowser.open_new_tab(url)
-    else:
-        print("Image could not be captured")
-    
-   # if user is happy after showing their image and motivating quotes we exit the 
-    if (frame_string == 'happiness'):
-        quit()
-    ###include timeout and run 2nd webcam eval follow_up_frame:
-    #adjust timeout based on length of videos played.
-    time.sleep(3)
-    follow_up_capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-    follow_up_file = directory + '/EmoPy/scripts/image_data/image2.jpg'
-    frame = capture_image(follow_up_capture, follow_up_file) 
-    if frame is not None:
-        # Can choose other target emotions from the emotion subset defined in
-        # fermodel.py in src directory. The function
-        # defined as `def _check_emotion_set_is_supported(self):`
-        target_emotions = ['anger', 'happiness']
-        model = FERModel(target_emotions, verbose=True)
-        follow_up_frame_string = model.predict(follow_up_file)
-        follow_up_url = directory + '/EmoPy/scripts/Emopers.html#{}#{}'.format(frame_string, follow_up_frame_string)
-        webbrowser.open_new_tab(follow_up_url)
-    else:
-        print("Image could not be captured")
+        #url = directory + '/EmoPy/scripts/templates/Emopers.html#{}#{}'.format(frame_string,"false")
+        #webbrowser.open_new_tab(url)
+        if frame_string == 'happiness':
+            frame_string = 'Happy'
+        else:
+            frame_string = 'Angry'
 
+        K.clear_session()
+        return(frame_string)
+    else:
+        print("Image could not be captured")
 
 if __name__ == '__main__':
     get_emotion_from_camera()
