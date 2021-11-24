@@ -6,10 +6,10 @@
 <p>You must have Python 3.6.6 if it's not there.
 you can directly install from the [Python website] (https://www.python.org/downloads/release/python-366/)</p>
 
-Clone the emopers git repository
+Clone the emopers git repository into a new directory
 
 ```
-https://github.com/WCU-CS-CooperLab/emopers.git
+git clone https://github.com/WCU-CS-CooperLab/emopers.git
 ```
 
 Change directory to emopers
