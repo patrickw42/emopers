@@ -56,3 +56,8 @@ pip install -r requirements.txt
  original_backend = model_weights_group['backend']#.decode('utf8')
  training_config = json.loads(training_config)#.decode('utf-8'))
  ```
+
+Run the program 
+```
+python emopy/Scripts/emopers.py
+```
