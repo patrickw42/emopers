@@ -21,6 +21,7 @@ virtualenv -p python3.6 venv
 Activate  Virtual Environment (Windows)
 source venv/Scripts/activate
 
+
 Activate  Virtual Environment (Mac)
 source venv/bin/activate
 
