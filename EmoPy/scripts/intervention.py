@@ -1,12 +1,12 @@
 # This file allows to perform Emotion detection on frames grabbed from the webcam
 # using OpenCV-Python
 import os
-import webbrowser
 os.environ['KERAS_BACKEND']='tensorflow'
 import tensorflow as tf
 import cv2
 from EmoPy.src.fermodel import FERModel
 from keras import backend as K
+from sys import platform
 
 #Function to remove Tensorflow warrnings
 def tf_no_warning():
@@ -51,11 +51,13 @@ def capture_image(video_capture, file):
     return frame
 
 def get_emotion_from_camera(flag):
-    print(flag)
     directory = os.getcwd() 
 
     # Specify the camera which you want to use. The default argument is '0'
-    video_capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    if(platform == 'win32'):
+        video_capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    else:
+        video_capture = cv2.VideoCapture(0)
     
     if(flag == "validationRun"):
         file = directory + '/static/image_data/followUp.jpg'
@@ -72,8 +74,7 @@ def get_emotion_from_camera(flag):
         model = FERModel(target_emotions, verbose=True)
 
         frame_string = model.predict(file)
-        #url = directory + '/EmoPy/scripts/templates/Emopers.html#{}#{}'.format(frame_string,"false")
-        #webbrowser.open_new_tab(url)
+
         if frame_string == 'happiness':
             frame_string = 'Happy'
         else:
