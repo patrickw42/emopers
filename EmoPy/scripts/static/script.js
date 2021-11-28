@@ -61,9 +61,11 @@ $( document ).ready(function() {
 		}else{
 			$('#message').html("Looks like your emotion changed from Angry to Happy!");
 			$('#right-container').html('<img id="follow" src="static/image_data/followUp.jpg"/>');
-	     	time.sleep( 5 );  //after 20 seconds shutdown 
-			location.assign('/shutdown');
-			
+	     	setTimeout(() => {  location.assign('/shutdown'); }, 8000)  
+	     	//after 8 seconds shutdown 
+			//DO WE REALLY WANT TO CLOSE IN THIS CASE? MIGHT BE BETTER TO LEAVE
+			// URL THE SAME SO THEY CAN SEE RESULTS OF INTERVENTION THAT WORKED
+           // BUT WE SHOULD STILL CLOSE emopers.py			
 		}
 	}
 
