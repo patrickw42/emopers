@@ -60,4 +60,4 @@ pip install -r requirements.txt
 
 We recommend that users have Chrome set as their default web browser but this is not required.
 
-Click on Emoper's.Bat to start the application
+Click on Emoper's.bat to start the application
