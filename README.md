@@ -57,8 +57,4 @@ pip install -r requirements.txt
  training_config = json.loads(training_config)#.decode('utf-8'))
  ```
 
-Change directories and run the program 
-```
-cd empoy/scripts
-python emopers.py
-```
+Click on Emoper's.Bat to start the application
