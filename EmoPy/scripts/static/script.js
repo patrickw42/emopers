@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-	    console.log(emotion);
 
 	var happy_data = ['static/intervention_data/happy1.mp4','static/intervention_data/happy2.mp4','static/intervention_data/happy3.mp4','static/intervention_data/happy4.mp4'];
     var motivating_data = ['static/intervention_data/motivating1.mp4', 'static/intervention_data/motivating2.mp4', 'static/intervention_data/motivating3.mp4', 'static/intervention_data/motivating4.mp4',]
@@ -10,24 +9,17 @@ $( document ).ready(function() {
 	if(emotion == 'Happy'){
 		//display motivational quote video
 		loadAnotherVideo(motivating_data)
-//update url to trigger flask to close emopers.py after video finished 
-//playing (STILL NEED TO IMPLEMENT BROWSER shutdown)
-		$('video')[0].addEventListener('ended',closeHandler,false);
-	    function closeHandler(e) {
-	        location.assign('/shutdown');
-	        window.close();
-	    }    
-//		########################################
+		$('video')[0].addEventListener('ended', closeHandler, false);  
 	}else{
 		loadAnotherVideo(happy_data)
-			//Run the script after video finished playing
-		$('video')[0].addEventListener('ended',myHandler,false);
-	    function myHandler(e) {
-	        postData('validationRun');
-	    }
+		//Run the script after video finished playing
+		$('video')[0].addEventListener('ended', myHandler, false);
 	}
-
-    //Function to run the script for followup
+	
+	//Function to run the script for followup
+	function myHandler(e) {
+		postData('validationRun');
+	}
     function postData(input) {
 	    $.ajax({
 	        type: "POST",
@@ -40,32 +32,29 @@ $( document ).ready(function() {
 	//Function will run when the ajax request complete
 	function validationRun(response){
 		if(response == "Angry"){
+			$('#message').html("Looks like you are still Angry.");
+			$('#right-container').html('<img id="follow" src="static/image_data/followUp.jpg" />');
 			if (confirm('Do you want to continue watching video?')) {
-				$('#right-container').html('<img id="follow" src="static/image_data/followUp.jpg" />');
-				$('#follow').delay(3000).queue(function(n) {
+				$('#follow').delay(8000).queue(function(n) {
 				 	loadAnotherVideo(happy_data)
-				 	//after 2nd video we close program
-				 	$('video')[0].addEventListener('ended',closeHandler,false);
-	                function closeHandler(e) {
-	                window.close();
-	                location.assign('/shutdown');
-	              
-	    }  
-				 	
+				 	//for now I am running the intervention untill user selects to discontinue
+				 	$('video')[0].addEventListener('ended', myHandler, false);             				 	
 				});
 			} else {
-			      window.close();  //doesn't seem to be closing browser			     
-			      location.assign('/shutdown');
-			    
+			    closeHandler();
 			}
 		}else{
 			$('#message').html("Looks like your emotion changed from Angry to Happy!");
 			$('#right-container').html('<img id="follow" src="static/image_data/followUp.jpg"/>');
+<<<<<<< HEAD
+			setTimeout(() => { closeHandler() }, 8000) 	     			
+=======
 	     	setTimeout(() => {  location.assign('/shutdown'); }, 8000)  
 	     	//after 8 seconds shutdown 
 			//DO WE REALLY WANT TO CLOSE IN THIS CASE? MIGHT BE BETTER TO LEAVE
 			// URL THE SAME SO THEY CAN SEE RESULTS OF INTERVENTION THAT WORKED
            // BUT WE SHOULD STILL CLOSE emopers.py			
+>>>>>>> be4f7164c8b5c8c7cc5cf8c5c20b3bc8d9a799a6
 		}
 	}
 
@@ -77,9 +66,20 @@ $( document ).ready(function() {
 		$('video').html('<source src="'+dataUrl+'" type="video/mp4"></source>' );
 		video.load();
 	}
-
+	//function to close the application
+	function closeHandler(e) {
+		closeHelper('close');
+	}
+	function closeHelper(input) {
+	    $.ajax({
+	        type: "POST",
+	        url: "/shutdown",
+	        data: { param: input },
+	        success: closeApp
+	    });
+	}  
+	function closeApp() {
+		//we can implement the browser closing functionallity here. if we have any solution.
+		$('#message').html("Application is closed! Please close the browser.");
+	}
 });
-
-
-
-
