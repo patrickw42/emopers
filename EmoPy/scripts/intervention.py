@@ -60,9 +60,9 @@ def get_emotion_from_camera(flag):
         video_capture = cv2.VideoCapture(0)
     
     if(flag == "validationRun"):
-        file = directory + '/static/image_data/followUp.jpg'
+        file = directory + '/EmoPy/scripts/static/image_data/followUp.jpg'
     else:
-        file = directory + '/static/image_data/image.jpg'
+        file = directory + '/EmoPy/scripts/static/image_data/image.jpg'
 
     frame = capture_image(video_capture, file)
 
