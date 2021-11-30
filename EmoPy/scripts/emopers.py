@@ -21,16 +21,7 @@ def shutdown():
     shutdown_func = request.environ.get('werkzeug.server.shutdown')
     if shutdown_func is None:
         raise RuntimeError('Not running werkzeug')
-    shutdown_func()
-    ##this closes Chrome chrome browser on windows
-    if platform.system() == 'Windows':
-        os.system("taskkill /im chrome.exe /f")
-    #for close chrome browser for mac os (NEED TO CONFIRM THIS WORKS....)
-    if platform.system() == 'Darwin' :
-        os.system("killall -9 'Google Chrome'")
-        #close hrome browser for Linux os (NEED TO CONFIRM THIS WORKS....)
-    if platform.system() == 'Linux' :
-        os.system("pkill "+ "chrome.exe") 
+    shutdown_func()    
     return "shutdown"
     
 if __name__ == "__main__":
