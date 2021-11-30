@@ -57,4 +57,7 @@ pip install -r requirements.txt
  training_config = json.loads(training_config)#.decode('utf-8'))
  ```
 
-Click on Emoper's.Bat to start the application
+
+We recommend that users have Chrome set as their default web browser but this is not required.
+
+Click on Emoper's.bat to start the application
