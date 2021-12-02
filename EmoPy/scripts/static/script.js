@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     //need to update size of array based on how many videos we have in end set
     // if we change set size 
     var happy_data = ['static/intervention_data/happy1.mp4', 'static/intervention_data/happy2.mp4', 'static/intervention_data/happy3.mp4', 'static/intervention_data/happy4.mp4', 'static/intervention_data/happy5.mp4', 'static/intervention_data/happy6.mp4', 'static/intervention_data/happy7.mp4'];
@@ -60,7 +59,7 @@ $(document).ready(function() {
     //Function to play the videos randomly from the generated list
     function loadAnotherVideo(items) {
         var dataUrl = items[Math.floor(Math.random() * items.length)];
-        $('#right-container').html('<video id="video" width="320" height="240" controls autoplay ></video')
+        $('#right-container').html('<video id="video" controls autoplay ></video')
         var video = $('video')[0];
         $('video').html('<source src="' + dataUrl + '" type="video/mp4"></source>');
         video.load();
