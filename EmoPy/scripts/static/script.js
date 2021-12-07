@@ -1,8 +1,8 @@
 $(document).ready(function() {
     //need to update size of array based on how many videos we have in end set
     // if we change set size 
-    var happy_data = ['static/intervention_data/happy1.mp4', 'static/intervention_data/happy2.mp4', 'static/intervention_data/happy3.mp4', 'static/intervention_data/happy4.mp4', 'static/intervention_data/happy5.mp4', 'static/intervention_data/happy6.mp4', 'static/intervention_data/happy7.mp4'];
-    var motivating_data = ['static/intervention_data/motivating1.mp4', 'static/intervention_data/motivating2.mp4', 'static/intervention_data/motivating3.mp4', 'static/intervention_data/motivating4.mp4', ]
+    var happy_data = ['static/intervention_data/happy1.mp4', 'static/intervention_data/happy2.mp4', 'static/intervention_data/happy3.mp4', 'static/intervention_data/happy4.mp4', 'static/intervention_data/happy5.mp4', 'static/intervention_data/happy6.mp4', 'static/intervention_data/happy7.mp4', 'static/intervention_data/happy8.mp4', 'static/intervention_data/happy9.mp4', 'static/intervention_data/happy10.mp4', 'static/intervention_data/happy11.mp4']
+    var motivating_data = ['static/intervention_data/motivating1.mp4', 'static/intervention_data/motivating2.mp4', 'static/intervention_data/motivating3.mp4', 'static/intervention_data/motivating4.mp4']
 
     //changing the default image to captured image
     $('#user').attr("src", "static/image_data/image.jpg");
