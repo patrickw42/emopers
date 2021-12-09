@@ -1,5 +1,6 @@
 # Emopers
 <p>Emotion intervention through Audio/Video after emotion Prediction.</p>
+<p>Emopers tool is a single-page python application which performs emotional intervention. Our application uses EmoPy as a background application for detecting the emotions of an individual. The overall idea of the project is to provide an intervention for negative emotions like (Anger, sad, frustration etc) based on the emotional subset available in Emopy. We are focusing on two emotions in our project Anger and happiness, where Anger is the negative emotion which is targeted for intervention in the attempt to change the emotional state from Anger to happiness.</p>
 
 ## Instruction to setup the Emoper's (Windows)
 
